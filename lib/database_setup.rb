@@ -1,3 +1,5 @@
+require 'pg'
+
 if ENV['ENVIRONMENT'] == 'test'
   connection = PG.connect(dbname: 'bunker_test')
 else
