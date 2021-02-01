@@ -56,3 +56,10 @@ I want to receive a confirmation of the booking
 As a host,
 So that I don't lose out on a potential night's fee
 I want to keep the property available until I have approved a booking
+
+Database and tables creation:
+
+1. Connect to psql
+2. Create bunker database with CREATE DATABASE bunker;
+3. Create bunker_test database with CREATE DATABASE bunker_test;
+4. CREATE TABLES using commands in ./db/migrations 
