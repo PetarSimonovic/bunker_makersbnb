@@ -2,7 +2,7 @@
 
 <h3>Headline specifications</h3>
 
-We would like a web application that allows users to list spaces they have available, and to hire spaces for the night.
+**List & Hire: A web application that allows hosts to list properties they have available, and guests to hire properties for the night.**
 
 
 - Any signed-up user can list a new space.
@@ -16,6 +16,8 @@ We would like a web application that allows users to list spaces they have avail
 <h3>User stories</h3>
 
 **MVP user stories**
+
+List & Hire: A web application that allows hosts to list properties they have available, and guests to hire properties for the night.
 
 As a host,
 In order to list my properties,
