@@ -6,7 +6,7 @@ feature 'add a property' do
 feature 'add a property' do
   scenario 'add a property and show it on main page' do
     adding_property
-    expect(current_path).to eq '/'
+    expect(current_path).to eq '/bunker'
   end
 end
 

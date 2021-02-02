@@ -5,7 +5,34 @@ require './lib/property.rb'
 # Bunker class
 class Bunker < Sinatra::Base
 
+  enable :sessions
+
   get '/' do
+    erb :welcome
+  end
+
+  get '/log_in' do
+    erb :log_in
+  end
+
+  post '/confirm_user' do
+    # User.check(username: params[:username], password: params[:password])
+    session[:username] = params[:username]
+    redirect '/bunker'
+  end
+
+  get '/sign_up' do
+    erb :sign_up
+  end
+
+  post '/confirm_sign_up' do
+    session[:username] = params[:username]
+    redirect '/bunker'
+  end
+
+  get '/bunker' do
+    @username = session[:username]
+    @password = session[:password]
     @properties = Property.all
     erb :index
   end
@@ -16,8 +43,7 @@ class Bunker < Sinatra::Base
 
   post '/update_property' do
     Property.create(name: params[:name], description: params[:description], price: params[:price])
-    
-    redirect '/'
+    redirect '/bunker'
   end
 
   run! if app_file == $0
