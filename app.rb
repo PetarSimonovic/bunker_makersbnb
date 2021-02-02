@@ -6,6 +6,7 @@ require './lib/property.rb'
 class Bunker < Sinatra::Base
 
   get '/' do
+    @properties = Property.all
     erb :index
   end
 
