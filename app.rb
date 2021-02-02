@@ -5,7 +5,19 @@ require './lib/property.rb'
 # Bunker class
 class Bunker < Sinatra::Base
 
-  get '/' do
+  get '/' do 
+    erb :welcome
+  end
+
+  get '/log_in' do 
+
+  end
+
+  get '/sign_up' do 
+    
+  end
+  
+  get '/bunker' do
     @properties = Property.all
     erb :index
   end
@@ -16,8 +28,7 @@ class Bunker < Sinatra::Base
 
   post '/update_property' do
     Property.create(name: params[:name], description: params[:description], price: params[:price])
-    
-    redirect '/'
+    redirect '/bunker'
   end
 
   run! if app_file == $0
