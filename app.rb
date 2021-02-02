@@ -5,6 +5,8 @@ require './lib/property.rb'
 # Bunker class
 class Bunker < Sinatra::Base
 
+  enable :sessions
+
   get '/' do 
     erb :welcome
   end
@@ -14,10 +16,16 @@ class Bunker < Sinatra::Base
   end
 
   get '/sign_up' do 
-    
+    erb :sign_up
   end
   
+  post '/confirm_sign_up' do
+    session[:username] = params[:username]
+    redirect '/bunker'
+  end
+
   get '/bunker' do
+    @username = session[:username]
     @properties = Property.all
     erb :index
   end
