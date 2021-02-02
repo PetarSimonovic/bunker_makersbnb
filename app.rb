@@ -7,18 +7,18 @@ class Bunker < Sinatra::Base
 
   enable :sessions
 
-  get '/' do 
+  get '/' do
     erb :welcome
   end
 
-  get '/log_in' do 
-
+  get '/log_in' do
+    erb :log_in
   end
 
-  get '/sign_up' do 
+  get '/sign_up' do
     erb :sign_up
   end
-  
+
   post '/confirm_sign_up' do
     session[:username] = params[:username]
     redirect '/bunker'
@@ -26,6 +26,7 @@ class Bunker < Sinatra::Base
 
   get '/bunker' do
     @username = session[:username]
+    @password = session[:password]
     @properties = Property.all
     erb :index
   end
