@@ -1,3 +1,10 @@
 Welcome to Bunker!
 
 <a href="/add_property"><button>Add Property</button></a>
+
+<ul>
+  <% @properties.each do |property| %>
+  <li> <%=property.name%> <%=property.description%> <%=property.price%>
+  </li>
+  <% end %>
+</ul>

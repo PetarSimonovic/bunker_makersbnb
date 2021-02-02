@@ -15,7 +15,6 @@ class Property
     end
 
     def self.all
-
       if ENV['ENVIRONMENT'] == 'test'
           connection = PG.connect(dbname: 'bunker_test')
         else
