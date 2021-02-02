@@ -12,6 +12,19 @@ describe User do
     end
   end
 
+  describe '.find' do
+    it 'should check users details against the user table' do
+      
+     user = User.create(username: "adam123", password: "Makers123", email: "adam@makers.com")
+
+     result = User.find(id: user.id)
+
+      expect(result.id).to eq user.id
+      expect(result.username).to eq "adam123"
+
+    end
+  end
+
 
 
 end

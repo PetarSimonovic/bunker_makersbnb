@@ -3,7 +3,6 @@ require_relative './database_setup'
 
 class Property
 
-
     def self.create(name:, description:, price:)
         if ENV['ENVIRONMENT'] == 'test'
             connection = PG.connect(dbname: 'bunker_test')

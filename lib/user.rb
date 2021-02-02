@@ -1,6 +1,8 @@
+require 'pg'
+
 class User
 
- attr_reader :username, :password, :email
+ attr_reader :id, :username, :password, :email
 
  def initialize(id:, username:, password:, email:)
    @id = id
@@ -17,6 +19,16 @@ class User
      end
      result = connection.exec("INSERT INTO users (username, password, email) VALUES ('#{username}', '#{password}', '#{email}') RETURNING id, username, password, email;")
      User.new(id: result[0]['id'], username: result[0]['username'], password: result[0]['password'], email: result[0]['email'])
+ end
+
+ def self.find(id:)
+  if ENV['ENVIRONMENT'] == 'test'
+    connection = PG.connect(dbname: 'bunker_test')
+  else
+    connection = PG.connect(dbname: 'bunker')
+  end
+  result = connection.exec("SELECT * FROM users WHERE id = '#{id}';")
+  User.new(id: result[0]['id'], username: result[0]['username'], password: result[0]['password'], email: result[0]['email'])
  end
 
 end
