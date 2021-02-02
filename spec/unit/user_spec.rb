@@ -25,6 +25,13 @@ describe User do
     end
   end
 
+  describe '.check' do 
+    it 'should check a users log in details are correct' do 
+      user = User.create(username: "adam123", password: "Makers123", email: "adam@makers.com")
+      result = User.check(id: user.id, username: "adam123", password: "Makers123")
 
+      expect(result).to eq "Login + login method"
+    end
+  end
 
 end
