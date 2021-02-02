@@ -15,6 +15,12 @@ class Bunker < Sinatra::Base
     erb :log_in
   end
 
+  post '/confirm_user' do
+    # User.check(username: params[:username], password: params[:password])
+    session[:username] = params[:username]
+    redirect '/bunker'
+  end
+
   get '/sign_up' do
     erb :sign_up
   end
