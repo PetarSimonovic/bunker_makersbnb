@@ -7,7 +7,7 @@ require './lib/user.rb'
 class Bunker < Sinatra::Base
 
   enable :sessions
-  set :sessions_secret, 'super secret'
+  # set :sessions_secret, 'super secret'
 
   get '/' do
     erb :welcome
@@ -30,9 +30,10 @@ class Bunker < Sinatra::Base
   end
 
   post '/confirm_sign_up' do
-    session[:username] = params[:username]
-    session[:id] = params[:id]
-    User.create(username: session[:username], password: params[:password], email: params[:email])
+    # session[:username] = params[:username]
+    user = User.create(username: params[:username], password: params[:password], email: params[:email])
+    session[:id] = user.id
+    session[:username] = user.username
     redirect '/bunker'
   end
 
@@ -49,7 +50,7 @@ class Bunker < Sinatra::Base
   end
 
   post '/update_property' do
-    Property.create(name: params[:name], description: params[:description], price: params[:price])
+    property = Property.create(user_id: session[:id], name: params[:name], description: params[:description], price: params[:price])
     redirect '/bunker'
   end
 
