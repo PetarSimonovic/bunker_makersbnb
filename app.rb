@@ -53,6 +53,10 @@ class Bunker < Sinatra::Base
     redirect '/bunker'
   end
 
+  get '/booking/:id' do
+    erb :booking
+  end
+
   run! if app_file == $0
 
 end
