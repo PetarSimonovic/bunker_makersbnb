@@ -15,7 +15,8 @@ end
 
 feature "request to book" do
   scenario "to be able to book a specific property" do
-    property = Property.create(name: "small bunker", description: "a tiny bunker", price: 1.00)
+    user = User.create(username: "test_user", password: "password", email: "test@email.com")
+    property = Property.create(user_id: user.id,name: "small bunker", description: "a tiny bunker", price: 1.00)
     visit ('/')
     click_link "Sign up"
     fill_in :username, with: "bill"
