@@ -1,6 +1,7 @@
 require 'sinatra'
 require './lib/property.rb'
 require './lib/user.rb'
+require './lib/booking.rb'
 # require 'database_setup'
 
 # Bunker class
@@ -51,6 +52,12 @@ class Bunker < Sinatra::Base
   post '/update_property' do
     Property.create(name: params[:name], description: params[:description], price: params[:price])
     redirect '/bunker'
+  end
+
+  get '/booking/:id' do
+    @property_id = params[:id]
+    @booking = Booking.create(property_id: params[:id], user_id: session[:id], status: "requested")
+    erb :booking
   end
 
   run! if app_file == $0
