@@ -6,6 +6,7 @@ describe Property do
 
       it "should return a list of all properties in the table" do
 
+
       user = User.create(username: "adam123", password: "Makers123", email: "adam@makers.com")
 
       property = Property.create(user_id: user.id, name: "nuclear bunker", description: "basic underground chamber", price: "10.00")
@@ -20,9 +21,10 @@ describe Property do
       expect(properties.first.name).to eq "nuclear bunker"
       expect(properties.first.description).to eq "basic underground chamber"
       expect(properties.first.user_id).to eq user.id
-    end 
-
+     end 
     end
+
+
 
 
 
