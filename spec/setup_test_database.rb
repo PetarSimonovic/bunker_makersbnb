@@ -5,6 +5,6 @@ def setup_test_database
 
   connection = PG.connect(dbname: "bunker_test")
 
-  connection.exec("TRUNCATE properties, users, bookings;")
-  # connection.exec("TRUNCATE users, bookings;")
+  connection.exec("TRUNCATE bookings, properties, users;")
+
 end
