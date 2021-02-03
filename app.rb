@@ -7,7 +7,7 @@ require './lib/user.rb'
 class Bunker < Sinatra::Base
 
   enable :sessions
-  # set :sessions_secret, 'super secret'
+  set :sessions_secret, 'super secret'
 
   get '/' do
     erb :welcome
@@ -31,6 +31,7 @@ class Bunker < Sinatra::Base
 
   post '/confirm_sign_up' do
     session[:username] = params[:username]
+    session[:id] = params[:id]
     User.create(username: session[:username], password: params[:password], email: params[:email])
     redirect '/bunker'
   end
