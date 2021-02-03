@@ -6,7 +6,7 @@ describe Property do
 
       it "should return a list of all properties in the table" do
       connection = PG.connect(dbname: 'bunker_test')
-      connection.exec("TRUNCATE properties;")
+      connection.exec("TRUNCATE properties, users, bookings;")
 
       property = Property.create(name: "nuclear bunker", description: "basic underground chamber", price: "10.00")
       Property.create(name: "luxury bunker", description: "comes with its own pool", price: "100.00")
@@ -19,7 +19,7 @@ describe Property do
       expect(properties.first.id).to eq property.id
       expect(properties.first.name).to eq "nuclear bunker"
       expect(properties.first.description).to eq "basic underground chamber"
-    end 
+    end
 
     end
 
