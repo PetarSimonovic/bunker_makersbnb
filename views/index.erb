@@ -5,7 +5,7 @@ Welcome to Bunker!
 <ul>
   <% @properties.each do |property| %>
   <li> <%=property.name%> <%=property.description%> <%=property.price%>
-    <form action="/booking/<%=property.id%>" method="get">
+    <form action="/booking/<%=property.property_id%>" method="get">
       <input type="submit" value="Book property">
     </form>
   </li>
@@ -13,4 +13,4 @@ Welcome to Bunker!
 </ul>
 
 User: <%= @username%>
-User ID: <%= @id %>
+User ID: <%= @user_id %>

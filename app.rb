@@ -22,7 +22,7 @@ class Bunker < Sinatra::Base
     # User.check(username: params[:username], password: params[:password])
     session[:username] = params[:username]
     user = User.find(username: session[:username])
-    session[:id] = user.id
+    session[:id] = user.user_id
     redirect '/bunker'
   end
 
@@ -33,14 +33,14 @@ class Bunker < Sinatra::Base
   post '/confirm_sign_up' do
     # session[:username] = params[:username]
     user = User.create(username: params[:username], password: params[:password], email: params[:email])
-    session[:id] = user.id
+    session[:user_id] = user.user_id
     session[:username] = user.username
     redirect '/bunker'
   end
 
   get '/bunker' do
     @username = session[:username]
-    @id = session[:id]
+    @user_id = session[:user_id]
     @password = session[:password]
     @properties = Property.all
     erb :index
@@ -51,13 +51,13 @@ class Bunker < Sinatra::Base
   end
 
   post '/update_property' do
-    property = Property.create(user_id: session[:id], name: params[:name], description: params[:description], price: params[:price])
+    property = Property.create(host_id: session[:user_id], name: params[:name], description: params[:description], price: params[:price])
     redirect '/bunker'
   end
 
   get '/booking/:id' do
-    @property_id = params[:id]
-    @booking = Booking.create(property_id: params[:id], user_id: session[:id], status: "requested")
+    @property_id = params[:property_id]
+    @booking = Booking.create(property_id: params[:property_id], guest_id: session[:user_id], status: "requested")
     erb :booking
   end
 

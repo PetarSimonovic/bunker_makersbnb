@@ -19,7 +19,7 @@ describe User do
 
      result = User.find(username: user.username)
 
-      expect(result.id).to eq user.id
+      expect(result.user_id).to eq user.user_id
       expect(result.username).to eq "adam123"
 
     end
@@ -28,7 +28,7 @@ describe User do
   describe '.check' do
     it 'should check a users log in details are correct' do
       user = User.create(username: "adam123", password: "Makers123", email: "adam@makers.com")
-      result = User.check(id: user.id, username: "adam123", password: "Makers123")
+      result = User.check(user_id: user.user_id, username: "adam123", password: "Makers123")
 
       expect(result).to eq "Login + login method"
     end

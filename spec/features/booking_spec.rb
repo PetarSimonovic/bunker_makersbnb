@@ -16,7 +16,7 @@ end
 feature "request to book" do
   scenario "to be able to book a specific property" do
     user = User.create(username: "test_user", password: "password", email: "test@email.com")
-    property = Property.create(user_id: user.id,name: "small bunker", description: "a tiny bunker", price: 1.00)
+    property = Property.create(host_id: user.user_id,name: "small bunker", description: "a tiny bunker", price: 1.00)
     visit ('/')
     click_link "Sign up"
     fill_in :username, with: "bill"
@@ -24,6 +24,6 @@ feature "request to book" do
     fill_in :email, with: "bill@email.com"
     click_button "Confirm sign up"
     click_button "Book property"
-    expect(current_path).to eq "/booking/#{property.id}"
+    expect(current_path).to eq "/booking/#{property.property_id}"
   end
 end
