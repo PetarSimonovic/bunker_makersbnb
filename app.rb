@@ -1,11 +1,13 @@
 require 'sinatra'
 require './lib/property.rb'
+require './lib/user.rb'
 # require 'database_setup'
 
 # Bunker class
 class Bunker < Sinatra::Base
 
   enable :sessions
+  # set :sessions_secret, 'super secret'
 
   get '/' do
     erb :welcome
@@ -18,6 +20,8 @@ class Bunker < Sinatra::Base
   post '/confirm_user' do
     # User.check(username: params[:username], password: params[:password])
     session[:username] = params[:username]
+    user = User.find(username: session[:username])
+    session[:id] = user.id
     redirect '/bunker'
   end
 
@@ -27,11 +31,13 @@ class Bunker < Sinatra::Base
 
   post '/confirm_sign_up' do
     session[:username] = params[:username]
+    User.create(username: session[:username], password: params[:password], email: params[:email])
     redirect '/bunker'
   end
 
   get '/bunker' do
     @username = session[:username]
+    @id = session[:id]
     @password = session[:password]
     @properties = Property.all
     erb :index
