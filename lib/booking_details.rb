@@ -27,15 +27,4 @@ class BookingDetails
     end
   end
 
-  # booking = details.map do |detail|
-  #   detail
-  # end
-
-  # counter = 0
-
-  # until counter == booking.length do
-  #   booking[counter]['property_id']
-  #   counter += 1
-  # end
-
 end

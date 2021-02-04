@@ -5,8 +5,7 @@ describe Property do
     describe '.all' do
 
       it "should return a list of all properties in the table" do
-
-
+    
       user = User.create(username: "adam123", password: "Makers123", email: "adam@makers.com")
 
       property = Property.create(host_id: user.user_id, name: "nuclear bunker", description: "basic underground chamber", price: "10.00")
@@ -23,10 +22,6 @@ describe Property do
       expect(properties.first.host_id).to eq user.user_id
      end 
     end
-
-
-
-
 
     describe '.create' do
         it 'should create a property listing' do
