@@ -4,3 +4,10 @@
 <input type='number' name='price' placeholder='What is the price per night'>
 <input type='submit' value='List your bunker!'>
 </form>
+
+<ul>
+  <% @booking_details.each do |detail| %>
+  <li><%= detail.name %> "Has been booked by" <%= detail.guest_id %>
+  </li>
+  <% end %>
+</ul>

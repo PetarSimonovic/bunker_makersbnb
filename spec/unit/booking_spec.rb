@@ -1,4 +1,5 @@
 require './lib/booking.rb'
+require './lib/booking_details.rb'
 
 describe Booking do
 
@@ -16,7 +17,7 @@ describe Booking do
 
     end
 
-    describe '.find' do
+    describe '.booking_details' do
       it 'should check users details against the user table' do
 
         host = User.create(username: "test_host", password: "password", email: "test@email.com")
@@ -26,9 +27,9 @@ describe Booking do
 
         Booking.create(property_id: property.property_id, host_id: property.host_id, guest_id: guest.user_id, status: "requested")
 
-        result = Booking.find(host: host.user_id)
+        result = BookingDetails.booking_details(user_id: host.user_id)
 
-        expect(result.property_id).to eq property.property_id
+        expect(result.first.host_id).to eq host.user_id
         
       end
     end

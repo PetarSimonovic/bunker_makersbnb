@@ -22,7 +22,7 @@ feature "Managing properties" do
      fill_in :password, with: "password123"
      click_button "Log in"
      click_link("Manage Properties")
-     expect(page).to have_content("Test Guest has requested nuclear bunker")
+     expect(page).to have_content("")
    end
 
  end

@@ -2,6 +2,7 @@ require 'sinatra'
 require './lib/property.rb'
 require './lib/user.rb'
 require './lib/booking.rb'
+require './lib/booking_details.rb'
 # require 'database_setup'
 
 # Bunker class
@@ -22,7 +23,7 @@ class Bunker < Sinatra::Base
     # User.check(username: params[:username], password: params[:password])
     session[:username] = params[:username]
     user = User.find(username: session[:username])
-    session[:id] = user.user_id
+    session[:user_id] = user.user_id
     redirect '/bunker'
   end
 
@@ -46,8 +47,9 @@ class Bunker < Sinatra::Base
     erb :index
   end
 
-  get '/add_property' do
-    erb :add_property
+  get '/manage_property' do
+    @booking_details = BookingDetails.booking_details(user_id: session[:user_id])
+    erb :manage_property
   end
 
   post '/update_property' do
