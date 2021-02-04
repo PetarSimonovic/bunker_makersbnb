@@ -55,10 +55,9 @@ class Bunker < Sinatra::Base
     redirect '/bunker'
   end
 
-  get '/booking/:property_id' do
+  get '/booking/:property_id/:host_id' do
     @property_id = params[:property_id]
-    @booking = Booking.create(property_id: params[:property_id], guest_id: session[:user_id], status: "requested")
-    
+    @booking = Booking.create(property_id: params[:property_id], host_id: params[:host_id], guest_id: session[:user_id], status: "requested")
     erb :booking
   end
 

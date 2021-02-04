@@ -11,7 +11,7 @@ feature "request to book" do
     click_button "Book property"
     expect(page).to have_content "Booking requested"
   end
-end 
+end
 
 feature "request to book" do
   scenario "to be able to book a specific property" do
@@ -24,6 +24,6 @@ feature "request to book" do
     fill_in :email, with: "bill@email.com"
     click_button "Confirm sign up"
     click_button "Book property"
-    expect(current_path).to eq "/booking/#{property.property_id}"
+    expect(current_path).to eq "/booking/#{property.property_id}/#{property.host_id}"
   end
 end
