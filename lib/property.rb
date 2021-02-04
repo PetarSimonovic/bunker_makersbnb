@@ -1,6 +1,7 @@
 require 'pg'
 require_relative './database_setup'
 require_relative './user'
+require_relative './booking'
 
 class Property
 

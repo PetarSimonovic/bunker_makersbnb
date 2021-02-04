@@ -23,7 +23,7 @@ class Booking
     end
 
     result = connection.exec("INSERT INTO bookings (property_id, guest_id, status) VALUES ('#{property_id}', '#{guest_id}', '#{status}') RETURNING booking_id, property_id, guest_id, status;")
-    Booking.new(booking_id: result[0]['id'], property_id: result[0]['property_id'], guest_id: result[0]['guest_id'], status: result[0]['status'])
+    Booking.new(booking_id: result[0]['booking_id'], property_id: result[0]['property_id'], guest_id: result[0]['guest_id'], status: result[0]['status'])
 
   end
 
