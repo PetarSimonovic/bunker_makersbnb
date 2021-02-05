@@ -1,6 +1,7 @@
 <h1>Welcome to Bunker!</h1>
 <h3>Bunker listings</h3>
 <br>
+
 <ul>
   <% @properties.each do |property| %>
   <li><%=property.name%> </li>
@@ -18,4 +19,4 @@ User ID: <%= @user_id %>
 <br>
 <br>
 <a href="/manage_property"><button>Manage Properties</button></a>
-
+<a href="/my_bookings"><button>My bookings</button><

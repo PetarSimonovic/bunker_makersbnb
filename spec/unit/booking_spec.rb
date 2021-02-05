@@ -30,7 +30,28 @@ describe Booking do
         result = BookingDetails.booking_details(user_id: host.user_id)
 
         expect(result.first.host_id).to eq host.user_id
-        
+
+      end
+    end
+
+    describe '.update_details' do
+      it 'should allow host to approve booking and update booking table' do
+
+        host = User.create(username: "test_host", password: "password", email: "test@email.com")
+        guest = User.create(username: "test_guest", password: "password", email: "test@email.com")
+
+        property = Property.create(host_id: host.user_id, name: "small bunker", description: "a tiny bunker", price: 1.00)
+
+        Booking.create(property_id: property.property_id, host_id: property.host_id, guest_id: guest.user_id, status: "requested")
+
+        result = BookingDetails.booking_details(user_id: host.user_id)
+
+        Booking.update(booking_id: result[0].booking_id)
+
+        updated_result = BookingDetails.booking_details(user_id: host.user_id)
+  
+        expect(updated_result.first.status).to eq "approved"
+
       end
     end
 

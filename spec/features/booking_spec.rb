@@ -26,4 +26,6 @@ feature "request to book" do
     click_button "Book property"
     expect(current_path).to eq "/booking/#{property.property_id}/#{property.host_id}"
   end
+
+
 end
