@@ -1,10 +1,8 @@
 Welcome to Bunker!
 
-<a href="/manage_property"><button>Manage Properties</button></a>
-
 <ul>
   <% @properties.each do |property| %>
-  <li> <%=property.name%> <%=property.description%> <%=property.price%>
+  <li> <h3><%=property.name%></h3> <%=property.description%> - £<%=property.price%> a night
     <form action="/booking/<%=property.property_id%>/<%=property.host_id%>" method="get">
       <input type="submit" value="Book property">
     </form>
@@ -12,5 +10,5 @@ Welcome to Bunker!
   <% end %>
 </ul>
 
-User: <%= @username%>
-User ID: <%= @user_id %>
+
+<a href="/manage_property"><button>Manage Properties</button></a>

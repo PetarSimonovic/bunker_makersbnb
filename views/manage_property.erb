@@ -9,5 +9,8 @@
   <% @booking_details.each do |detail| %>
   <li><%= detail.name %> "Has been booked by" <%= detail.guest_id %>
   </li>
+  <form action="/booking_confirmation/<%=detail.booking_id%>" method="get">
+    <input type="submit" value="Accept booking">
+  </form>
   <% end %>
 </ul>
