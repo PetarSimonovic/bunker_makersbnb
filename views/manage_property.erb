@@ -7,7 +7,7 @@
 
 <ul>
   <% @booking_details.each do |detail| %>
-  <li><%= detail.name %> "Has been booked by" <%= detail.guest_id %>
+  <li><%= detail.name %> Has been booked by <%= detail.guest_id %> Booking ref: <%= detail.booking_id %>
   </li>
   <% end %>
 </ul>
