@@ -46,18 +46,10 @@ describe Booking do
 
         result = BookingDetails.booking_details(user_id: host.user_id)
 
-        p result
-        p result[0].property_id
-
         Booking.update(booking_id: result[0].booking_id)
 
         updated_result = BookingDetails.booking_details(user_id: host.user_id)
-        # p updated_result
-        #
-        # p updated_result.booking_id
-        # p updated_result.status
-
-
+  
         expect(updated_result.first.status).to eq "approved"
 
       end

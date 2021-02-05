@@ -1,0 +1,6 @@
+<ul>
+  <% @guest_bookings.each do |detail| %>
+  <li>Your booking for <%= detail.name %> has been: <%= detail.status %> 
+  </li>
+  <% end %>
+</ul>
