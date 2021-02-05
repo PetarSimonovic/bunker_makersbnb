@@ -48,7 +48,7 @@ describe Booking do
 
         Booking.update(booking_id: result[0].booking_id)
 
-        updated_result = BookingDetails.booking_details(user_id: host.user_id)
+        updated_result = BookingDetails.guest_bookings(user_id: guest.user_id)
   
         expect(updated_result.first.status).to eq "approved"
 
