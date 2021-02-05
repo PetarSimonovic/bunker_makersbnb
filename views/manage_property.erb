@@ -1,9 +1,23 @@
+<label><h4>Here's who's requested to stay in your bunker. Please confirm or deny their stay request:</h4>
+<ul>
+  <% @booking_details.each do |detail| %>
+  <li>Property name: <%= detail.name %></li> 
+  Has been requested by User: <%= detail.guest_id %>
+ <% end %>
+</ul>
+</label>
+
+<label><h4>Would you like to add another bunker?</h4>
 <form action="/update_property" method="post" >
 <input type='text' name='name' placeholder='Add bunker name'>
-<input type='text' name='description' placeholder='Describe your buker'>
+<br>
+<input type='text' name='description' placeholder='Describe your bunker'>
+<br>
 <input type='number' name='price' placeholder='What is the price per night'>
+<br>
 <input type='submit' value='List your bunker!'>
 </form>
+</label>
 
 <ul>
   <% @booking_details.each do |detail| %>
@@ -13,3 +27,4 @@
   </form>
   <% end %>
 </ul>
+

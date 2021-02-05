@@ -9,7 +9,7 @@ feature "request to book" do
     fill_in :email, with: "bill@email.com"
     click_button "Confirm sign up"
     click_button "Book property"
-    expect(page).to have_content "Booking requested"
+    expect(page).to have_content "Here are your booking details"
   end
 end
 

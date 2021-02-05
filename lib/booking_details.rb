@@ -28,6 +28,7 @@ class BookingDetails
     end
   end
 
+
   def self.guest_bookings(user_id:)
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bunker_test')
