@@ -3,6 +3,6 @@
 feature 'Testing infrastructure' do
   scenario 'can run app and check content' do
     visit('/')
-    expect(page).to have_content 'Welcome to Bunker!'
+    expect(page).to have_content 'Welcome to BunkerBnB!'
   end
 end
