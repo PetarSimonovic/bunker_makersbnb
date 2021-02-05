@@ -28,4 +28,16 @@ class Booking
 
   end
 
+  def self.update(booking_id:)
+
+    if ENV['ENVIRONMENT'] == 'test'
+        connection = PG.connect(dbname: 'bunker_test')
+      else
+        connection = PG.connect(dbname: 'bunker')
+    end
+
+    result = connection.exec("UPDATE bookings SET status = 'approved' WHERE booking_id = '#{booking_id}';")
+
+  end
+
 end

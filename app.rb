@@ -63,6 +63,11 @@ class Bunker < Sinatra::Base
     erb :booking
   end
 
+  post '/booking_confirmation/:booking_id' do
+    Booking.update(booking_id: params[:booking_id])
+    redirect '/manage_property'
+  end
+
   run! if app_file == $0
 
 end
