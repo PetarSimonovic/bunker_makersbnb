@@ -1,5 +1,8 @@
 Bunker is Airbnb for shelters and fortifications. Users can post details of their bunkers, approve or reject booking requests, and manage their properties.
 
+https://user-images.githubusercontent.com/69108995/114383254-45dd0380-9b85-11eb-807f-2e04e6710d78.png![image](https://user-images.githubusercontent.com/69108995/118106704-cafe4700-b3d5-11eb-95e4-4a7e8a7ddf18.png)
+
+
 It was developed as a Makers Academy group database project using Ruby and Sinatra.
 
 
